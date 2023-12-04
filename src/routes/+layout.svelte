@@ -1,45 +1,25 @@
-<script>
-	import 'bootstrap/dist/css/bootstrap.min.css';
-	let isOpen = false;
-	function toggleOpen() {
-		isOpen = !isOpen;
-	}
+<script lang="ts">
+	import '../app.pcss';
+	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 </script>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="/">yuskey.com</a>
-		<button
-			on:click={toggleOpen}
-			class="navbar-toggler"
-			type="button"
-			data-bs-toggle="collapse"
-			data-bs-target="#navbarNav"
-			aria-controls="navbarNav"
-			aria-expanded="false"
-			aria-label="Toggle navigation"
-		>
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class:show={isOpen} class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="/">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/about">About</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/blogs">Blog</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/contact">Contact</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
-
-<main class="container">
+<!-- App Shell -->
+<AppShell>
+	<svelte:fragment slot="header">
+		<!-- App Bar -->
+		<AppBar>
+			<svelte:fragment slot="lead">
+				<a href="/">
+					<strong class="text-xl">Yusuke Miyata</strong>
+				</a>
+			</svelte:fragment>
+			<svelte:fragment slot="trail">
+				<a class="btn btn-sm" href="/about">About</a>
+				<a class="btn btn-sm" href="/blogs">Blog</a>
+				<a class="btn btn-sm" href="/contact">Contact</a>
+			</svelte:fragment>
+		</AppBar>
+	</svelte:fragment>
+	<!-- Page Route Content -->
 	<slot />
-</main>
+</AppShell>

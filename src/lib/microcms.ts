@@ -43,7 +43,7 @@ export const getDetail = async (
 
 function imageResizedHtml(html: string) {
     return html.replace(/<img\s+src="([^"]+)"[^>]*>/g, (_, srcAttr) => {
-        const srcWithoutQueryParams = srcAttr.split('?')[0];
-        return `<img src="${srcWithoutQueryParams}" alt="" style="max-width: 100%; height: auto;">`;
+        const srcWithoutQueryParams = srcAttr.split('?')[0]
+        return `<a href="${srcWithoutQueryParams}"><img src="${srcWithoutQueryParams}" alt="" style="max-width: 75%; height: auto;"></a>`;
     });
 }

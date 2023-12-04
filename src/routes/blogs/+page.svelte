@@ -24,7 +24,7 @@
 	ul {
 		display: flex;
 		padding: 0px;
-		margin: 0 auto;
+		justify-content: center;
 	}
 
 	img {
