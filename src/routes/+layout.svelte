@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.pcss';
+
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 </script>
 
@@ -14,7 +15,8 @@
 				</a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
-				<a class="btn btn-sm" href="/about">About</a>
+				<button type="button" class="btn variant-filled">Button</button>
+				<a class="btn btn-sm valiant-filled" href="/about">About</a>
 				<a class="btn btn-sm" href="/blogs">Blog</a>
 				<a class="btn btn-sm" href="/contact">Contact</a>
 			</svelte:fragment>
@@ -22,4 +24,6 @@
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />
+
+	<svelte:fragment slot="footer">Footer</svelte:fragment>
 </AppShell>
