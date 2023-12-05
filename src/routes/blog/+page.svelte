@@ -12,7 +12,7 @@
 	<div>
 		{#each data.contents as content}
 			<ul>
-				<a href="./blogs/{content.id}">
+				<a href="./blog/{content.id}">
 					<img src={content.eyecatch?.url} alt="eyecatch" />
 				</a>
 			</ul>
