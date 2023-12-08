@@ -6,24 +6,24 @@
 
 <!-- App Shell -->
 <AppShell>
-	<svelte:fragment slot="header">
-		<!-- App Bar -->
-		<AppBar>
-			<svelte:fragment slot="lead">
-				<a href="/">
-					<strong>Yusuke Miyata</strong>
-				</a>
-			</svelte:fragment>
-			<svelte:fragment slot="trail">
-				<div class="btn-group variant-filled">
-					<a class="btn-sm" href="/about">About</a>
-					<a class="btn-sm" href="/blog">Blog</a>
-					<a class="btn-sm" href="/selection">Selection</a>
-					<a class="btn-sm" href="/contact">Contact</a>
-				</div>
-			</svelte:fragment>
-		</AppBar>
-	</svelte:fragment>
+	<header class="header">
+		<slot name="header">
+			<!-- App Bar -->
+			<AppBar background="">
+				<svelte:fragment slot="lead">
+					<a href="/">
+						<strong>Yusuke Miyata</strong>
+					</a>
+				</svelte:fragment>
+				<svelte:fragment slot="trail">
+					<a href="/about">About</a>
+					<a href="/blog">Blog</a>
+					<a href="/selection">Selection</a>
+					<a href="/contact">Contact</a>
+				</svelte:fragment>
+			</AppBar>
+		</slot>
+	</header>
 	<!-- Page Route Content -->
 	<slot />
 
@@ -33,6 +33,13 @@
 </AppShell>
 
 <style>
+	.header {
+		width: 100%;
+		height: auto;
+		position: fixed;
+		top: 0;
+		z-index: 100;
+	}
 	.page-footer {
 		width: 100%;
 		aspect-ratio: 6;
