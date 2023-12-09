@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Saos from 'saos';
 
 	let windowHeight: number | null = null;
 	onMount(() => {
@@ -22,20 +23,36 @@
 	<h2 class="subtitle">What I can do</h2>
 	<div class="p-4">
 		<div class="grid grid-cols-3 gap-8">
-			<div class="skill">
-				<p>iOS App Development</p>
-			</div>
-			<div class="skill">
-				<p>Android App Development</p>
-			</div>
-			<div class="skill">
-				<p>Flutter App Development</p>
-			</div>
+			<Saos animation={'from-left 1s'}>
+				<div class="skill">
+					<p>iOS App Development</p>
+				</div>
+			</Saos>
+			<Saos animation={'from-left 2s'}>
+				<div class="skill">
+					<p>Android App Development</p>
+				</div>
+			</Saos>
+			<Saos animation={'from-left 3s'}>
+				<div class="skill">
+					<p>Flutter App Development</p>
+				</div>
+			</Saos>
 		</div>
 	</div>
 </section>
 
 <style lang="postcss">
+	@keyframes -global-from-left {
+		0% {
+			transform: rotateX(50deg) translateX(-200vw) skewX(-50deg);
+			opacity: 1;
+		}
+		100% {
+			transform: rotateX(0deg) translateX(0) skewX(0deg);
+			opacity: 1;
+		}
+	}
 	.top-container {
 		@apply flex w-full items-center justify-center;
 	}
