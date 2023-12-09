@@ -14,42 +14,53 @@
 
 <section class="top-container" style="height: {windowHeight}px;">
 	<div class="top-content">
-		<h1>YUSUKE MIYATA</h1>
-		<p class="top-description">This is a mobile app developer's portfolio site.</p>
+		<h1 class="title">YUSUKE MIYATA</h1>
+		<p class="top-description">This is a mobile app developer's site.</p>
 	</div>
 </section>
-<section class="card w-full">
-	<div class="p-4 space-y-4">
-		<div class="grid grid-cols-3 gap-4">
-			<div class="placeholder" style="height: 300px;" />
-			<div class="placeholder" style="height: 300px;" />
-			<div class="placeholder" style="height: 300px;" />
+<section class="skills-container">
+	<h2 class="subtitle">What I can do</h2>
+	<div class="p-4">
+		<div class="grid grid-cols-3 gap-8">
+			<div class="skill">
+				<p>iOS App Development</p>
+			</div>
+			<div class="skill">
+				<p>Android App Development</p>
+			</div>
+			<div class="skill">
+				<p>Flutter App Development</p>
+			</div>
 		</div>
 	</div>
 </section>
 
-<style>
-	h1 {
-		font-size: 4vw;
-		font-weight: bold;
-		letter-spacing: 0.2em;
-	}
+<style lang="postcss">
 	.top-container {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 20 0;
+		@apply flex w-full items-center justify-center;
 	}
 
 	.top-content {
-		text-align: center;
+		@apply text-center;
+	}
+
+	.title {
+		@apply text-[4vw] font-bold tracking-widest;
 	}
 
 	.top-description {
-		margin-top: 2vw;
-		font-size: 1em;
-		font-weight: bold;
-		letter-spacing: 0.2vw;
+		@apply mt-[2vw] text-base font-bold tracking-wider;
+	}
+
+	.skills-container {
+		@apply w-full bg-[#fdfdfd] text-center;
+	}
+
+	.subtitle {
+		@apply text-[3.5vw] font-bold tracking-widest;
+	}
+
+	.skill {
+		@apply flex aspect-[1] w-full items-center justify-center bg-[#5d5d5d] text-[1.5vw] font-bold text-white;
 	}
 </style>

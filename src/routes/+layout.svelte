@@ -12,14 +12,12 @@
 			<AppBar background="">
 				<svelte:fragment slot="lead">
 					<a href="/">
-						<strong>Yusuke Miyata</strong>
+						<strong>Home</strong>
 					</a>
 				</svelte:fragment>
 				<svelte:fragment slot="trail">
 					<a href="/about">About</a>
 					<a href="/blog">Blog</a>
-					<a href="/selection">Selection</a>
-					<a href="/contact">Contact</a>
 				</svelte:fragment>
 			</AppBar>
 		</slot>
