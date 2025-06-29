@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
 	<meta charset="utf-8" />
@@ -8,8 +8,8 @@
 	%sveltekit.head%
 </head>
 
-<body data-sveltekit-preload-data="hover" data-theme="skeleton">
-	<div style="display: contents" class="h-full overflow-hidden">%sveltekit.body%</div>
+<body data-sveltekit-preload-data="hover" data-theme="skeleton" style="margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto;">
+	<div id="app" style="display: flex; flex-direction: column; min-height: 100vh;">%sveltekit.body%</div>
 </body>
 
 </html>
