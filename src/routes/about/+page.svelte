@@ -116,13 +116,12 @@
 
 		<!-- お問い合わせ -->
 		<section class="contact-section">
-			<h2 class="section-title">Contact</h2>
+			<h2 class="section-title">お仕事のご依頼</h2>
 			<p class="contact-description">
 				プロジェクトのご相談やお仕事のご依頼は、お気軽にお問い合わせください。
 			</p>
 			<div class="contact-actions">
-				<a href="/contact" class="btn-primary">お問い合わせ</a>
-				<a href="/products" class="btn-outline">制作実績を見る</a>
+				<a href="/products" class="btn-primary">制作実績を見る</a>
 			</div>
 		</section>
 	</div>
@@ -344,24 +343,6 @@
 		transform: translateY(-1px);
 	}
 
-	.btn-outline {
-		background-color: transparent;
-		color: #111;
-		padding: 0.875rem 2rem;
-		text-decoration: none;
-		border: 2px solid #111;
-		border-radius: 6px;
-		font-weight: 500;
-		transition: all 0.2s ease;
-		display: inline-block;
-	}
-
-	.btn-outline:hover {
-		background-color: #111;
-		color: white;
-		transform: translateY(-1px);
-	}
-
 	/* レスポンシブ */
 	@media (max-width: 768px) {
 		.about-section {
@@ -394,8 +375,7 @@
 			align-items: center;
 		}
 
-		.btn-primary,
-		.btn-outline {
+		.btn-primary {
 			width: 200px;
 			text-align: center;
 		}

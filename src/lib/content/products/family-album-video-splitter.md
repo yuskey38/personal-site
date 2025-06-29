@@ -1,15 +1,15 @@
-# みてね動画分割アプリ
+# みてね動画分割
 
 ## 基本情報
 
-- **プラットフォーム**: iOS / Android
-- **ステータス**: リリース済み
+- **プラットフォーム**: Flutter
+- **ステータス**: 開発中
 - **開発言語**: Dart
 - **フレームワーク**: Flutter
 
 ## 概要
 
-家族アルバムアプリ「みてね」から長時間動画をダウンロードした際に、2分単位で自動分割するFlutterアプリです。
+家族アルバムアプリ「みてね」に長時間動画をアップロードしたい場合に、2分単位で自動分割することができるFlutterアプリです。
 FFmpegを使用した高速動画処理により、大容量の動画ファイルを効率的に分割し、写真ライブラリに保存します。
 
 ## 主な機能
@@ -25,15 +25,12 @@ FFmpegを使用した高速動画処理により、大容量の動画ファイ�
 
 - Flutter
 - Dart
+- Riverpod
 - FFmpeg
-- Isar (ローカルデータベース)
 - Firebase Analytics
-- Provider (状態管理)
 
 ## リンク
 
-- **App Store**:
-  [App Store](https://apps.apple.com/jp/app/みてね動画分割アプリ/id6739264933)
-- **Google Play**:
-  [Google Play](https://play.google.com/store/apps/details?id=com.yuskey.family_album_video_splitter)
+- **App Store**: [リンク未設定]
+- **Google Play**: [リンク未設定]
 - **GitHub**: [リンク未設定]

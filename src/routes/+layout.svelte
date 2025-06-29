@@ -9,8 +9,6 @@
 		<div class="nav-links">
 			<a href="/about" class="nav-link">About</a>
 			<a href="/products" class="nav-link">Products</a>
-			<a href="/blog" class="nav-link">Blog</a>
-			<a href="/contact" class="nav-link">Contact</a>
 		</div>
 	</nav>
 </header>
