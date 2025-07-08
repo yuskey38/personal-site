@@ -1,5 +1,76 @@
 // コンテンツ管理ユーティリティ
+//
+// 多言語プライバシーポリシー機能:
+// - リクエストヘッダー（Accept-Language）から地域を自動判定
+// - 日本以外のアクセスに対しては英語版プライバシーポリシーを表示
+// - ファイル命名規則: {appId}.md (日本語), {appId}-en.md (英語)
+// - 英語版ファイルが存在しない場合は日本語版をフォールバック
 
+/**
+ * リクエストから地域を判定する
+ * Accept-Languageヘッダーやクラウドプロバイダのヘッダーを使用して
+ * 日本からのアクセスかどうかを判定します
+ */
+export function detectRegion(request: Request): 'jp' | 'other' {
+    // Accept-Language ヘッダーを確認
+    const acceptLanguage = request.headers.get('accept-language') || '';
+    
+    // 日本語が含まれているかチェック
+    if (acceptLanguage.includes('ja') || acceptLanguage.includes('jp')) {
+        return 'jp';
+    }
+    
+    // CloudFrontやCDNのヘッダーから地域を判定（オプション）
+    const cloudFrontCountry = request.headers.get('cloudfront-viewer-country');
+    if (cloudFrontCountry === 'JP') {
+        return 'jp';
+    }
+    
+    // その他の地域判定ヘッダー（Cloudflareなど）
+    const cfIpCountry = request.headers.get('cf-ipcountry');
+    if (cfIpCountry === 'JP') {
+        return 'jp';
+    }
+    
+    // デフォルトは日本以外として扱う
+    return 'other';
+}
+
+/**
+ * 地域に応じたプライバシーポリシーのマークダウンを取得（ビルド時読み込み）
+ * 
+ * @param appId アプリケーションID
+ * @param region 判定された地域 ('jp' | 'other')
+ * @returns プライバシーポリシーのマークダウン文字列
+ */
+export async function getPrivacyPolicyByRegion(appId: string, region: 'jp' | 'other'): Promise<string | null> {
+    try {
+        if (region === 'jp') {
+            // 日本の場合はデフォルトファイル
+            const module = await import(`./privacy/${appId}.md?raw`);
+            return module.default;
+        } else {
+            // 日本以外の場合は英語版
+            const module = await import(`./privacy/${appId}-en.md?raw`);
+            return module.default;
+        }
+    } catch (error) {
+        console.error(`Failed to load privacy policy for ${appId} (region: ${region}):`, error);
+        
+        // 英語版が見つからない場合は日本語版をフォールバック
+        if (region === 'other') {
+            try {
+                const module = await import(`./privacy/${appId}.md?raw`);
+                return module.default;
+            } catch (fallbackError) {
+                console.error(`Failed to load fallback privacy policy for ${appId}:`, fallbackError);
+                return null;
+            }
+        }
+        
+        return null;
+    }
+}
 
 /**
  * プライバシーポリシーのマークダウンを取得（ビルド時読み込み）

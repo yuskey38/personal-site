@@ -4,23 +4,38 @@
 	
 	export let data: PageData;
 	$: htmlContent = parseMarkdown(data.privacyMarkdown);
+	$: isEnglish = (data as any).isEnglish;
+	$: region = (data as any).region;
 </script>
 
 <svelte:head>
 	<title>Privacy Policy - {data.productName} | YUSUKE MIYATA</title>
-	<meta name="description" content="{data.productName}のプライバシーポリシーです。" />
+	<meta name="description" content={isEnglish 
+		? `Privacy Policy for ${data.productName}.` 
+		: `${data.productName}のプライバシーポリシーです。`} />
+	<meta name="language" content={isEnglish ? 'en' : 'ja'} />
 </svelte:head>
 
 <section class="privacy-section">
 	<div class="container">
 		<!-- パンくずリスト -->
 		<nav class="breadcrumb">
-			<a href="/products">Products</a>
+			<a href="/products">{isEnglish ? 'Products' : 'Products'}</a>
 			<span class="breadcrumb-separator">/</span>
 			<a href="/products/{data.productId}">{data.productName}</a>
 			<span class="breadcrumb-separator">/</span>
-			<span class="current">Privacy Policy</span>
+			<span class="current">{isEnglish ? 'Privacy Policy' : 'Privacy Policy'}</span>
 		</nav>
+
+		<!-- 言語切り替え表示 -->
+		{#if isEnglish}
+		<div class="language-notice">
+			<p class="notice-text">
+				🌍 English version is displayed for international users. 
+				<span class="region-info">Region detected: {region}</span>
+			</p>
+		</div>
+		{/if}
 
 		<!-- プライバシーポリシー内容 -->
 		<div class="privacy-content">
@@ -30,7 +45,7 @@
 		<!-- フッターナビゲーション -->
 		<footer class="privacy-footer">
 			<a href="/products/{data.productId}" class="btn-outline">
-				← {data.productName}に戻る
+				{isEnglish ? `← Back to ${data.productName}` : `← ${data.productName}に戻る`}
 			</a>
 		</footer>
 	</div>
@@ -71,6 +86,27 @@
 
 	.current {
 		color: #111;
+		font-weight: 500;
+	}
+
+	/* 言語通知 */
+	.language-notice {
+		background-color: #e3f2fd;
+		border: 1px solid #bbdefb;
+		border-radius: 6px;
+		padding: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.notice-text {
+		color: #1565c0;
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+
+	.region-info {
+		color: #0d47a1;
 		font-weight: 500;
 	}
 

@@ -1,10 +1,13 @@
-import { getPrivacyPolicy, getProductData } from '$lib/content';
+import { detectRegion, getPrivacyPolicyByRegion, getProductData } from '$lib/content';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, request }) => {
+    // リクエストから地域を判定
+    const region = detectRegion(request);
+    
     const [privacyMarkdown, productData] = await Promise.all([
-        getPrivacyPolicy(params.slug),
+        getPrivacyPolicyByRegion(params.slug, region),
         getProductData(params.slug)
     ]);
     
@@ -15,6 +18,8 @@ export const load: PageServerLoad = async ({ params }) => {
     return {
         privacyMarkdown,
         productName: productData.name,
-        productId: params.slug
+        productId: params.slug,
+        region, // フロントエンドで表示言語を判定するために追加
+        isEnglish: region === 'other'
     };
 }; 
