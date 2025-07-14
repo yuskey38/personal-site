@@ -1,11 +1,2 @@
 # app-ads.txt
-# AdMob Publisher ID should be replaced with your actual Publisher ID
-# Format: google.com, pub-9473073532057878, DIRECT, f08c47fec0942fa0
-# 
-# Instructions:
-# 1. Replace pub-XXXXXXXXXXXXXXXX with your actual AdMob Publisher ID
-# 2. You can find your Publisher ID in your AdMob console under Account > Settings > Account Information
-# 3. The line should look like: google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0
-#
-# Example (replace with your actual ID):
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-9473073532057878, DIRECT, f08c47fec0942fa0
